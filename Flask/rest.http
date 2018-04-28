@@ -1,0 +1,4 @@
+GET http://localhost:5001/article
+# CURL http://suggestqueries.google.com/complete/search?output=toolbar&hl=en&q=hello&gl=in
+
+# GET https://www.google.com/search?num=30&source=hp&q=a

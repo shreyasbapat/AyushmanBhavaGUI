@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1>Google Search Suggestions</h1>
+    Search: <input type="text" id="search_form_input" style="background-color:bisque" autofocus></input>
+    <div id="place_for_suggestions"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script>
+            
+    $("#search_form_input").keyup(function(){
+        var text = $(this).val();
+                   $.ajax({
+                    url: "/suggestion",
+                    type: "get",
+                    data: {jsdata: text},
+                    success: function(response) {
+                        $("#place_for_suggestions").html(response);
+                    },
+                    error: function(xhr) {
+                        //Do Something to handle error
+                    }
+                    });
+        
+    });
+
+    </script>
+</div>
+{% endblock %}

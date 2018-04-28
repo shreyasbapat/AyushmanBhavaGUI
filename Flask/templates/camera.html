@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+        <h1>Welcome To Camera Feed</h1>
+                
+        <button id="search_form_input" class="btn btn-large btn-block btn-default">Turn Off</button>
+        <div id="place_for_suggestions">
+            <img  src=" {{url_for_camera}}" alt="">            
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+        <script>
+                
+        $("#search_form_input").click(function(){
+            var text = $(this).val();
+                       $.ajax({
+                        url: "/cam_off",
+                        type: "get",
+                        //data: {jsdata: text},
+                        success: function(response) {
+                            console.log("Cam Off")
+                            //$("#place_for_suggestions").html(response);
+                        },
+                        error: function(xhr) {
+                            //Do Something to handle error
+                        }
+                        });
+            
+        });
+    
+        </script>
+    </div>
+{% endblock %}
