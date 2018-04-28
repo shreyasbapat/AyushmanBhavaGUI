@@ -4,7 +4,11 @@ from data import *
 import requests
 import json
 from bs4 import BeautifulSoup
-import os, subprocess
+import os
+import subprocess
+
+os.environ['http_proxy'] = "http://10.7.0.1:8080" 
+os.environ['https_proxy'] = "https://10.7.0.1:8080"
 
 app = Flask(__name__)
 api = Api(app)
