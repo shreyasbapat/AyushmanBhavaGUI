@@ -43,9 +43,13 @@ def cam_off():
 
 @app.route('/motor1')
 def run_m1():
-   run = "python3 motor1.py"
-   subprocess.call(run)
-   return
+   # run = "python3 motor1.py"
+   # subprocess.call(run)
+   # return
+   import motor1
+   motor1.setup(Motor=1)
+   motor1.run(Motor=1)
+   return render_template('index.html', **data)
 
 @app.route('/about')
 def about():
