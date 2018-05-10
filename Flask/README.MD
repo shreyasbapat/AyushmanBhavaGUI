@@ -21,3 +21,13 @@ All dependencies are listed in `requirements.txt`. Install those before proceedi
 > python3 app.py
 
 Then open `http://localhost:5001/` in your browser.
+
+
+
+## Motor Code
+
+Just create a method
+>import motor1
+>motor1.setup(Motor=#Pin No)
+>motor1.run(Motor=#Pin No)
+return bla bla
