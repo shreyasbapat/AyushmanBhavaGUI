@@ -28,6 +28,9 @@ Then open `http://localhost:5001/` in your browser.
 
 Just create a method
 >import motor1
+
 >motor1.setup(Motor=#Pin No)
+
 >motor1.run(Motor=#Pin No)
-return bla bla
+
+>return bla bla
