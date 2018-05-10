@@ -114,7 +114,7 @@ path1 = "Data"
 # In[ ]:
 
 
-for i in range(1, 124):
+for i in range(1, 8):
     path_major = path1+'/'+str(i)
     for j in range(1, 101):
         img = array(Image.open(path_major+"/"+str(j)+"_.jpg"))

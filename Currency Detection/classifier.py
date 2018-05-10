@@ -27,7 +27,7 @@ import matplotlib
 
 
 input_img = Input(shape=(128, 128, 1))
-num_classes = 123
+num_classes = 7
 img_rows, img_cols = 128, 128
 
 
@@ -92,7 +92,7 @@ batch_size1 = 64
 # In[ ]:
 
 
-for i in range(1, 124):
+for i in range(1, 8):
     path_major = path+'/'+str(i)
     for j in range(1, 101):
         img = array(Image.open(path_major+"/"+str(j)+"_.jpg"))
