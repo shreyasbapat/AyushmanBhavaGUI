@@ -6,6 +6,30 @@ import json
 from bs4 import BeautifulSoup
 import os
 import subprocess
+from openpyxl import load_workbook
+
+wb1 = load_workbook('sheet.xlsx')
+ws = wb1["Sheet1"]
+
+a = ws['B1']
+b = ws['B2']
+c = ws['B3']
+d = ws['B4']
+e = ws['B5']
+f = ws['B6']
+g = ws['B7']
+h = ws['B8']
+i = ws['B9']
+j = ws['B10']
+
+items = [a,b,c,d,e,f,g,h,i,j]
+
+def restart_trans():
+	for i in range (1,11):
+		ws.cell(row=i, column=2).value=0
+	wb1.save('sheet.xlsx')
+
+restart_trans()
 
 os.environ['http_proxy'] = "http://10.7.0.1:8080" 
 os.environ['https_proxy'] = "https://10.7.0.1:8080"
@@ -50,6 +74,12 @@ def run_m1():
    motor1.setup(Motor=1)
    motor1.run(Motor=1)
    return render_template('index.html', **data)
+
+@app.route('/test')
+def test():
+	ws.cell(row=6, column=2).value=5
+	wb1.save('sheet.xlsx')
+	return
 
 @app.route('/about')
 def about():
@@ -101,5 +131,7 @@ class Employees(Resource):
 
 api.add_resource(Employees, '/employees') # Route_1
 
+
+
 if __name__ == '__main__':
-    app.run(host= '0.0.0.0', port=5001, debug=True)
+    app.run(port=5001, debug=True)
