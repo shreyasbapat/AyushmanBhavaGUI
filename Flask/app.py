@@ -5,15 +5,22 @@ import json
 import os
 import subprocess
 from openpyxl import load_workbook
+from time import sleep
 
 def work_load():
 	wb1 = load_workbook('sheet.xlsx')
 	ws = wb1["Sheet1"]
 	return ws, wb1
 
+def run_motor(Motor):
+	import motor1
+	motor1.setup(Motor)
+	motor1.run(Motor)
+
+
 ws, wb1 = work_load()
 
-a = ws['B1']
+a = ws['B1']   
 b = ws['B2']
 c = ws['B3']
 d = ws['B4']
@@ -209,6 +216,16 @@ def run_m10():
    motor1.setup(Motor=10)
    motor1.run(Motor=10)
    return render_template('index.html')
+
+@app.route('/afterpay')
+def dispense():
+	gate = False
+	for i in range (1,11):
+		for  j in range (1,ws.cell(row=i, column=2).value + 1):
+			run_motor(Motor=i)
+			sleep(6)
+	return render_template('index.html')
+
 
 @app.route('/test')
 def test():
