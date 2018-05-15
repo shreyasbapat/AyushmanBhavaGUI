@@ -56,12 +56,72 @@ def camera():
 
 @app.route('/motor1')
 def run_m1():
-   # run = "python3 motor1.py"
-   # subprocess.call(run)
-   # return
    import motor1
    motor1.setup(Motor=1)
    motor1.run(Motor=1)
+   return render_template('index.html', **data)
+
+@app.route('/motor2')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=2)
+   motor1.run(Motor=2)
+   return render_template('index.html', **data)
+
+@app.route('/motor3')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=3)
+   motor1.run(Motor=3)
+   return render_template('index.html', **data)
+
+@app.route('/motor4')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=4)
+   motor1.run(Motor=4)
+   return render_template('index.html', **data)
+
+@app.route('/motor5')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=5)
+   motor1.run(Motor=5)
+   return render_template('index.html', **data)
+
+@app.route('/motor6')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=6)
+   motor1.run(Motor=6)
+   return render_template('index.html', **data)
+
+@app.route('/motor7')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=7)
+   motor1.run(Motor=7)
+   return render_template('index.html', **data)
+
+@app.route('/motor8')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=8)
+   motor1.run(Motor=8)
+   return render_template('index.html', **data)
+
+@app.route('/motor9')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=9)
+   motor1.run(Motor=9)
+   return render_template('index.html', **data)
+
+@app.route('/motor10')
+def run_m1():
+   import motor1
+   motor1.setup(Motor=10)
+   motor1.run(Motor=10)
    return render_template('index.html', **data)
 
 @app.route('/test')
