@@ -89,61 +89,62 @@ def grandt():
 def med1():
 	ws.cell(row=1, column=2).value = ws.cell(row=1, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	print (ws.cell(row=1, column=2).value)
+	return str(ws.cell(row=1, column=2).value)
 
 @app.route('/med2')
 def med2():
 	ws.cell(row=2, column=2).value = ws.cell(row=2, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return str(ws.cell(row=2, column=2).value)
 
 @app.route('/med3')
 def med3():
 	ws.cell(row=3, column=2).value = ws.cell(row=3, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return str(ws.cell(row=3, column=2).value)
 
 @app.route('/med4')
 def med4():
 	ws.cell(row=4, column=2).value = ws.cell(row=4, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return str(ws.cell(row=4, column=2).value)
 
 @app.route('/med5')
 def med5():
 	ws.cell(row=5, column=2).value = ws.cell(row=5, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return str(ws.cell(row=5, column=2).value)
 
 @app.route('/med6')
 def med6():
 	ws.cell(row=6, column=2).value = ws.cell(row=6, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return ws.cell(row=6, column=2).value
 
 @app.route('/med7')
 def med7():
 	ws.cell(row=7, column=2).value = ws.cell(row=7, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return str(ws.cell(row=7, column=2).value)
 
 @app.route('/med8')
 def med8():
 	ws.cell(row=8, column=2).value = ws.cell(row=8, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return str(ws.cell(row=8, column=2).value)
 
 @app.route('/med9')
 def med9():
 	ws.cell(row=9, column=2).value = ws.cell(row=9, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return str(ws.cell(row=9, column=2).value)
 
 @app.route('/med10')
 def med10():
 	ws.cell(row=10, column=2).value = ws.cell(row=10, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	return render_template('menu.html')
+	return str(ws.cell(row=10, column=2).value)
 
 @app.route('/camera')
 def camera():
