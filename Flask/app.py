@@ -85,66 +85,13 @@ def discard():
 def grandt():	
 	return render_template('total.html', variable=str(compute_sum()))
 
-@app.route('/med1')
-def med1():
-	ws.cell(row=1, column=2).value = ws.cell(row=1, column=2).value + 1
+@app.route('/med/<id>')
+def med(id):
+	id=int(id)
+	ws.cell(row=id, column=2).value = ws.cell(row=id, column=2).value + 1
 	wb1.save('sheet.xlsx')
-	print (ws.cell(row=1, column=2).value)
-	return str(ws.cell(row=1, column=2).value)
-
-@app.route('/med2')
-def med2():
-	ws.cell(row=2, column=2).value = ws.cell(row=2, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return str(ws.cell(row=2, column=2).value)
-
-@app.route('/med3')
-def med3():
-	ws.cell(row=3, column=2).value = ws.cell(row=3, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return str(ws.cell(row=3, column=2).value)
-
-@app.route('/med4')
-def med4():
-	ws.cell(row=4, column=2).value = ws.cell(row=4, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return str(ws.cell(row=4, column=2).value)
-
-@app.route('/med5')
-def med5():
-	ws.cell(row=5, column=2).value = ws.cell(row=5, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return str(ws.cell(row=5, column=2).value)
-
-@app.route('/med6')
-def med6():
-	ws.cell(row=6, column=2).value = ws.cell(row=6, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return ws.cell(row=6, column=2).value
-
-@app.route('/med7')
-def med7():
-	ws.cell(row=7, column=2).value = ws.cell(row=7, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return str(ws.cell(row=7, column=2).value)
-
-@app.route('/med8')
-def med8():
-	ws.cell(row=8, column=2).value = ws.cell(row=8, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return str(ws.cell(row=8, column=2).value)
-
-@app.route('/med9')
-def med9():
-	ws.cell(row=9, column=2).value = ws.cell(row=9, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return str(ws.cell(row=9, column=2).value)
-
-@app.route('/med10')
-def med10():
-	ws.cell(row=10, column=2).value = ws.cell(row=10, column=2).value + 1
-	wb1.save('sheet.xlsx')
-	return str(ws.cell(row=10, column=2).value)
+	# print (ws.cell(row=id, column=2).value)
+	return str(ws.cell(row=id, column=2).value)
 
 @app.route('/camera')
 def camera():
@@ -246,77 +193,8 @@ def pay():
 
 @app.route('/payy')
 def payy():
-   return '''
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
+   return render_template('payy.html')
 
-<div class="jumbotron text-center">
-        <h1>Welcome To Payment Gateway</h1>
-    <!--
-        <button id="paytm" class="smoothScroll btn btn-info btn-lg " >Pay By Paytm</button>
-        <iframe name="paytm-frame" frameborder="20" height="500" width="700" hidden></iframe>
-        <br></br>
-    <script>
-        $(document).ready(function(){
-            console.log("jq")
-            $("#paytm").click(function(){
-            $("#paytm-frame").show()      
-            $("#paytm-frame").attr('src', 'http://p-y.tm/z8aQm4rRk')
-            });
-        });
-    </script>
-    -->
-
-  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-  <div id="paypal-button-container"></div>
-
-  <script>
-      paypal.Button.render({
-
-          env: 'sandbox', // sandbox | production
-
-          // Show the buyer a 'Pay Now' button in the checkout flow
-          commit: true,
-
-          // payment() is called when the button is clicked
-          payment: function() {
-
-              // Set up a url on your server to create the payment
-              var CREATE_URL = 'http://localhost:5001/payment';
-
-              // Make a call to your server to set up the payment
-              return paypal.request.post(CREATE_URL)
-                  .then(function(res) {
-                      return res.paymentID;
-                  });
-          },
-
-          // onAuthorize() is called when the buyer approves the payment
-          onAuthorize: function(data, actions) {
-
-              // Set up a url on your server to execute the payment
-              var EXECUTE_URL = 'http://localhost:5001/execute';
-
-              // Set up the data you need to pass to your server
-              var data = {
-                  paymentID: data.paymentID,
-                  payerID: data.payerID
-              };
-
-              // Make a call to your server to execute the payment
-              return paypal.request.post(EXECUTE_URL, data)
-                  .then(function (res) {
-                     // window.alert('Payment Complete! You will be redirected to homepage now.');
-                      window.setTimeout(function(){ window.location.href = "http://localhost:5001"; },3000);
-                  });
-          }
-
-      }, '#paypal-button-container');
-  </script>
-</div>
-
-   '''
 paypalrestsdk.configure({
   "mode": "sandbox", # sandbox or live
   "client_id": "AR92SyiTyQfPWGs8bH2xAOncMsKiuTXWECm7aBODm62jYBwboMLyyaKmDGBckKT0oDFMpj47AwYOKLuR",

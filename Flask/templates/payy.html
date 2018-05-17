@@ -1,0 +1,75 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
+
+{% include 'includes/_navbar1.html' %}
+
+<div class="jumbotron text-center">
+    <h1>Welcome To Payment Gateway</h1>
+<!--
+    <button id="paytm" class="smoothScroll btn btn-info btn-lg " >Pay By Paytm</button>
+    <iframe name="paytm-frame" frameborder="20" height="500" width="700" hidden></iframe>
+    <br></br>
+<script>
+    $(document).ready(function(){
+        console.log("jq")
+        $("#paytm").click(function(){
+        $("#paytm-frame").show()      
+        $("#paytm-frame").attr('src', 'http://p-y.tm/z8aQm4rRk')
+        });
+    });
+</script>
+-->
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<div id="paypal-button-container"></div>
+
+<script>
+  paypal.Button.render({
+
+      env: 'sandbox', // sandbox | production
+
+      // Show the buyer a 'Pay Now' button in the checkout flow
+      commit: true,
+
+      // payment() is called when the button is clicked
+      payment: function() {
+
+          // Set up a url on your server to create the payment
+          var CREATE_URL = 'http://localhost:5001/payment';
+
+          // Make a call to your server to set up the payment
+          return paypal.request.post(CREATE_URL)
+              .then(function(res) {
+                  return res.paymentID;
+              });
+      },
+
+      // onAuthorize() is called when the buyer approves the payment
+      onAuthorize: function(data, actions) {
+
+          // Set up a url on your server to execute the payment
+          var EXECUTE_URL = 'http://localhost:5001/execute';
+
+          // Set up the data you need to pass to your server
+          var data = {
+              paymentID: data.paymentID,
+              payerID: data.payerID
+          };
+
+          // Make a call to your server to execute the payment
+          return paypal.request.post(EXECUTE_URL, data)
+              .then(function (res) {
+                 // window.alert('Payment Complete! You will be redirected to homepage now.');
+                  window.setTimeout(function(){ window.location.href = "http://localhost:5001"; },3000);
+              });
+      }
+
+  }, '#paypal-button-container');
+</script>
+
+<br>
+<a href="http://localhost:5001" style="font-size:20px">Cancel Payment</a><br>
+<a href="http://localhost:5001/dis" style="font-size:20px">Cancel Payment and do New Purchase</a>
+</div>

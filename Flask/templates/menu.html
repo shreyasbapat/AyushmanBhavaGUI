@@ -80,43 +80,44 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 
       <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
         <h1 class="wow fadeInUp" data-wow-delay="0.6s">Select items one by one: </h1>
-        <p class="wow fadeInUp" data-wow-delay="0.9s">This is an autonomous machine which will help you connect to a Doctor in an emergency or dispense normal medicines to you. :)</p>
-        
-        <a onclick="med('10')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Pads</a>
-        <span id="medd10" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
+        <p class="wow fadeInUp" data-wow-delay="0.9s">This is an autonomous machine which will help you connect to a Doctor in an emergency or dispense normal medicines to you. :)</p> 
         
         <a onclick="med('5')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine5</a>
         <span id="medd5" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
         
         <a onclick="med('1')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine1</a>
         <span id="medd1" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
-
+        
         <a onclick="med('6')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine6</a>
-        <span id="medd6" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span><br>
+        <span id="medd6" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
         
         <a onclick="med('2')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine2</a>
-        <span id="medd2" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
-
+        <span id="medd2" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span><br>
+        
         <a onclick="med('7')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine7</a>
         <span id="medd7" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
-
+        
         <a onclick="med('3')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine3</a>
         <span id="medd3" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
-
+        
         <a onclick="med('8')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine8</a>
         <span id="medd8" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
-
+        
         <a onclick="med('4')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine4</a>
         <span id="medd4" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
-
-        <a onclick="med('9')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine9</a>
-        <span id="medd9" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span><br>
         
-        <a href="http://localhost:5001/dis" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Discard Current Order</a><br>
-        <a href="http://localhost:5001/nxt" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Continue</a>
-      <!--   <input type="submit" value="SOS Alert" name="SOS"/> <br> <br> <br>
-        <input type="submit" value="Purchase" name="Purchase" /> -->
-      </div>
+        <a onclick="med('9')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Medicine9</a>
+        <span id="medd9" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span>
+        
+        <a onclick="med('10')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Pads</a>
+        <span id="medd10" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span><br><br>
+
+        <a href="http://localhost:5001/dis" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Reset Current Order</a>
+        <a href="http://localhost:5001/nxt" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Continue</a>
+        <a href="http://localhost:5001/afterpay" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Dispense</a>
+        <!--   <input type="submit" value="SOS Alert" name="SOS"/> <br> <br> <br>
+          <input type="submit" value="Purchase" name="Purchase" /> -->
+        </div>
 
     </div>
   </div>
@@ -124,7 +125,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 <script>
   function med(num){
                  $.ajax({
-                  url: "http://localhost:5001/med"+num,
+                  url: "http://localhost:5001/med/"+num,
                   type: "get",
                   //data: {jsdata: text},
                   success: function(response) {
