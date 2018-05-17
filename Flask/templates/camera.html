@@ -3,9 +3,67 @@
 {% block body %}
 <div class="jumbotron text-center">
         <h1>Welcome To Camera Feed</h1>
-           
+        
+        <button class="btn-lg btn-success  " id="sos">SOS</button><br>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="modal1">Open Modal</button>
 
-        <iframe src="https://appr.tc" frameborder="10" height="500" width="900"></iframe>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+        <!-- <iframe src="https://appr.tc/r/99991" frameborder="10" height="500" width="900"></iframe>  -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="myDIV">
+    <ul>
+        <ol>
+            <button id="machine1" type="button" class="btn btn-lg btn-info" onclick="cam_on('1')">Connect to Machine1</button>
+            <button id="active1" type="button" class="btn btn-lg btn-danger" > <p id="p1">Inactive</p> </button>
+        </ol>
+        <span id="span1" class="machine" >
+            <iframe class="cam" id="frame1" frameborder="10" height="500" width="900" hidden></iframe> 
+        </span>
+        <ol>
+            <button id="machine2" type="button" class="btn btn-lg btn-info" onclick="cam_on('2')">Connect to Machine2</button>
+            <button id="active2" type="button" class="btn btn-lg btn-danger" > <p id="p2">Inactive</p> </button>
+        </ol>
+        <span id="span2" class="machine" >
+                <iframe class="cam" id="frame2" frameborder="10" height="500" width="900" hidden></iframe> 
+        </span>
+        <ol>
+                <button id="machine3" type="button" class="btn btn-lg btn-info" onclick="cam_on('3')">Connect to Machine3</button>
+                <button id="active3" type="button" class="btn btn-lg btn-danger" > <p id="p3">Inactive</p> </button>
+            </ol>
+        <span id="span3" class="machine" hidden>
+                <iframe class="cam" id="frame3" frameborder="10" height="500" width="900" hidden></iframe> 
+        </span>
+        <ol>
+                <button id="machine4" type="button" class="btn btn-lg btn-info" onclick="cam_on('4')">Connect to Machine4</button>
+                <button id="active4" type="button" class="btn btn-lg btn-danger" > <p id="p4">Inactive</p> </button>
+            </ol>
+        <span id="span4" class="machine" hidden>
+                <iframe class="cam" id="frame4" frameborder="10" height="500" width="900" hidden></iframe> 
+        </span>
+    </ul>
+</div>
+        
+        <!-- <iframe src="https://appr.tc/r/99991" frameborder="10" height="500" width="900"></iframe> -->
 
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script>       
@@ -26,6 +84,38 @@
             
         });
     
+        </script> -->
+        <script>
+        $(document).ready(function(){
+            $("#sos").click(function(){
+                $("#modal1").click();
+            });
+        });
+        </script>
+        <script>
+                function cam_on(mac_no){
+                    console.log("called "+mac_no)
+                    $(".machine").hide()
+                    $("#span"+mac_no).show()
+                    $("#frame"+mac_no).show()
+                    $(".cam").attr('src','');                
+                    $("#frame"+mac_no).attr('src','https://appr.tc/r/9999'+mac_no);
+                    $("#p"+mac_no).text("Active")
+                    $("#active"+mac_no).removeClass('btn-danger')
+                    $("#active"+mac_no).addClass('btn-success')
+                }
+        </script>
+        <!-- <script>
+                // Add active class to the current button (highlight it)
+                var header = document.getElementById("myDIV");
+                var btns = header.getElementsByClassName("btn");
+                for (var i = 0; i < btns.length; i++) {
+                  btns[i].addEventListener("click", function() {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                  });
+                }
         </script> -->
     </div>
 {% endblock %}
