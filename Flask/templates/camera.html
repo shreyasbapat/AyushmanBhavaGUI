@@ -3,157 +3,119 @@
 {% block body %}
 <div class="jumbotron text-center">
         <h1>Welcome To Camera Feed</h1>
-                
-        <!-- <button id="search_form_input" class="btn btn-large btn-block btn-default">Turn Off</button>
-        <div id="place_for_suggestions">
-            <img  src=" {{url_for_camera}}" alt="">         
-        </div> -->
-        <!-- <a href="http://meet.jit.si/1081064/" target="">Open</a> -->
-        <!-- <iframe src="http://meet.jit.si/pd1081064/" frameborder="10" height="600" width="800"></iframe> -->
-        <!-- <iframe src="http://localhost:8082/stream.flv/" frameborder="10" height="600" width="800"></iframe> -->
-        <div id="paytm">
-            <iframe src="http://p-y.tm/z8aUMkQN0" frameborder="10" height="600" width="800"></iframe>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         
+        <button class="btn-lg btn-success  " id="sos">SOS</button><br>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="modal1">Open Modal</button>
 
-	<!-- <script src="{{ url_for('static', filename='camera.js') }}"></script> -->
-        <script>
-            
-            $("#search_form_input").click(function(){
-                var text = $(this).val();
-                $.ajax({
-                    url: "/cam_off",
-                    type: "get",
-                    //data: {jsdata: text},
-                    success: function(response) {
-                        console.log("Cam Off")
-                        //$("#place_for_suggestions").html(response);
-                    },
-                    error: function(xhr) {
-                        //Do Something to handle error
-                    }
-                });   
-            });
-            
-        </script>
-       
-        <!-- <div id="video-container">
-            <video id="camera-stream" width="800" height="400" autoplay></video>
-        </div> -->
-        <!-- <script>
-            window.onload = function() {
-                
-                // Normalize the various vendor prefixed versions of getUserMedia.
-                navigator.getUserMedia = (navigator.getUserMedia ||
-                navigator.webkitGetUserMedia ||
-                navigator.mozGetUserMedia || 
-                navigator.msGetUserMedia);
-                // Check that the browser supports getUserMedia.
-                // If it doesn't show an alert, otherwise continue.
-                if (navigator.getUserMedia) {
-                    // Request the camera.
-                    navigator.getUserMedia(
-                        // Constraints
-                        {
-                            audio : true,
-                            video: { width: 1280, height: 720 }
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+        <!-- <iframe src="https://appr.tc/r/99991" frameborder="10" height="500" width="900"></iframe>  -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="myDIV">
+    <ul>
+        <ol>
+            <button id="machine1" type="button" class="btn btn-lg btn-info" onclick="cam_on('1')">Connect to Machine1</button>
+            <button id="active1" type="button" class="btn btn-lg btn-danger" > <p id="p1">Inactive</p> </button>
+        </ol>
+        <span id="span1" class="machine" >
+            <iframe class="cam" id="frame1" frameborder="10" height="500" width="900" hidden></iframe> 
+        </span>
+        <ol>
+            <button id="machine2" type="button" class="btn btn-lg btn-info" onclick="cam_on('2')">Connect to Machine2</button>
+            <button id="active2" type="button" class="btn btn-lg btn-danger" > <p id="p2">Inactive</p> </button>
+        </ol>
+        <span id="span2" class="machine" >
+                <iframe class="cam" id="frame2" frameborder="10" height="500" width="900" hidden></iframe> 
+        </span>
+        <ol>
+                <button id="machine3" type="button" class="btn btn-lg btn-info" onclick="cam_on('3')">Connect to Machine3</button>
+                <button id="active3" type="button" class="btn btn-lg btn-danger" > <p id="p3">Inactive</p> </button>
+            </ol>
+        <span id="span3" class="machine" hidden>
+                <iframe class="cam" id="frame3" frameborder="10" height="500" width="900" hidden></iframe> 
+        </span>
+        <ol>
+                <button id="machine4" type="button" class="btn btn-lg btn-info" onclick="cam_on('4')">Connect to Machine4</button>
+                <button id="active4" type="button" class="btn btn-lg btn-danger" > <p id="p4">Inactive</p> </button>
+            </ol>
+        <span id="span4" class="machine" hidden>
+                <iframe class="cam" id="frame4" frameborder="10" height="500" width="900" hidden></iframe> 
+        </span>
+    </ul>
+</div>
+        
+        <!-- <iframe src="https://appr.tc/r/99991" frameborder="10" height="500" width="900"></iframe> -->
+
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>       
+        $("#search_form_input").click(function(){
+            var text = $(this).val();
+                       $.ajax({
+                        url: "/cam_off",
+                        type: "get",
+                        //data: {jsdata: text},
+                        success: function(response) {
+                            console.log("Cam Off")
+                            //$("#place_for_suggestions").html(response);
                         },
-                        
-                        // Success Callback
-                        function(localMediaStream) {
-        // Get a reference to the video element on the page.
-        var vid = document.getElementById('camera-stream');
-        
-        // Create an object URL for the video stream and use this 
-        // to set the video source.
-        vid.src = window.URL.createObjectURL(localMediaStream);
-        },
-        
-        // Error Callback
-        function(err) {
-            // Log the error to the console.
-            console.log('The following error occurred when trying to use getUserMedia: ' + err);
-        }
-        );
-        
-    } else {
-        alert('Sorry, your browser does not support getUserMedia');
-    }
+                        error: function(xhr) {
+                            //Do Something to handle error
+                        }
+                        });
+            
+        });
     
-}
-</script> -->
-
-
-<div class="select">
-    <label for="audioSource">Audio source: </label><select id="audioSource"></select>
-</div>
-
-<div class="select">
-    <label for="videoSource">Video source: </label><select id="videoSource"></select>
-</div>
-
-<video autoplay></video>
-
-<script>
-    const videoElement = document.querySelector('video');
-    const audioSelect = document.querySelector('select#audioSource');
-    const videoSelect = document.querySelector('select#videoSource');
-    
-    navigator.mediaDevices.enumerateDevices()
-    .then(gotDevices).then(getStream).catch(handleError);
-    
-    audioSelect.onchange = getStream;
-    videoSelect.onchange = getStream;
-    
-    function gotDevices(deviceInfos) {
-        for (var i = 0; i !== deviceInfos.length; ++i) {
-            var deviceInfo = deviceInfos[i];
-            var option = document.createElement('option');
-            option.value = deviceInfo.deviceId;
-            if (deviceInfo.kind === 'audioinput') {
-                option.text = deviceInfo.label ||
-                'microphone ' + (audioSelect.length + 1);
-                audioSelect.appendChild(option);
-            } else if (deviceInfo.kind === 'videoinput') {
-                option.text = deviceInfo.label || 'camera ' +
-                (videoSelect.length + 1);
-                videoSelect.appendChild(option);
-            } else {
-                console.log('Found one other kind of source/device: ', deviceInfo);
-            }
-        }
-    }
-    
-    function getStream() {
-        if (window.stream) {
-            window.stream.getTracks().forEach(function(track) {
-                track.stop();
+        </script> -->
+        <script>
+        $(document).ready(function(){
+            $("#sos").click(function(){
+                $("#modal1").click();
             });
-        }
-        
-        var constraints = {
-            audio: {
-                deviceId: {exact: audioSelect.value}
-            },
-            video: {
-                deviceId: {exact: videoSelect.value}
-            }
-        };
-        
-        navigator.mediaDevices.getUserMedia(constraints).
-        then(gotStream).catch(handleError);
-    }
-    
-    function gotStream(stream) {
-        window.stream = stream; // make stream available to console
-  videoElement.srcObject = stream;
-}
-
-function handleError(error) {
-  console.error('Error: ', error);
-}
-</script>
-</div>
-
-{% endblock %} -->
+        });
+        </script>
+        <script>
+                function cam_on(mac_no){
+                    console.log("called "+mac_no)
+                    $(".machine").hide()
+                    $("#span"+mac_no).show()
+                    $("#frame"+mac_no).show()
+                    $(".cam").attr('src','');                
+                    $("#frame"+mac_no).attr('src','https://appr.tc/r/9999'+mac_no);
+                    $("#p"+mac_no).text("Active")
+                    $("#active"+mac_no).removeClass('btn-danger')
+                    $("#active"+mac_no).addClass('btn-success')
+                }
+        </script>
+        <!-- <script>
+                // Add active class to the current button (highlight it)
+                var header = document.getElementById("myDIV");
+                var btns = header.getElementsByClassName("btn");
+                for (var i = 0; i < btns.length; i++) {
+                  btns[i].addEventListener("click", function() {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                  });
+                }
+        </script> -->
+    </div>
+{% endblock %}
