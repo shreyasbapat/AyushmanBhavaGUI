@@ -1,0 +1,37 @@
+First open the terminal and type 
+
+Sudo nano /boot/config.txt
+
+In that change following values to
+
+hdmi_group = 2
+hdmi_ mode = 87
+hdmi_cvt 800 480 60 6 0 0 0
+
+Save and Exit
+
+
+#### Touch Configuration ####
+
+Open www.waveshare.com/wiki/5inch_HDMI_LCD
+
+At the bottom of this page in resources there will be an image with LCD-shoe-xxxxxx.tar.gz
+Download it and extract it by 
+
+cd /home/pi/downloads
+sudo tar xvf filename.tar.gz
+cd filename/
+sudo ./LCD5-show
+
+After this pi will automatically reboot
+
+After reboot open terminal 
+
+go to cd/home/pi/Downloads/LCD-show(filename)
+sudo dpkg -i xinput-calibrator_0.7.5-1_armhf.deb
+
+We're done :)
+
+close terminal, open menu->preferences->calibrate touchscreen(I will prefer calibrate it v=by stylus as it doesn't have very sensitive touch because of being resistive touch.)
+
+
