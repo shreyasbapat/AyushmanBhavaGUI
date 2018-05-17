@@ -1,0 +1,196 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+        <h1>Welcome To Payment Gateway</h1>
+  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <!-- <div>
+        <iframe name="select_frame" src="http://p-y.tm/z8aQm4rRk" frameborder="20" height="500" width="900"></iframe>
+    </div> -->
+    <!-- <script>
+            $(document).ready(function(){
+                var aa = document.getElementById("select_frame").contentWindow.getElementById("tAmount");
+                aa.value="21";
+                //$('iframe[name=select_frame]').contents().find('#tAmount').val("21");
+                console.log($('iframe[name=select_frame]').contents().find('#totalAmountspan').val());
+                console.log($('iframe[name=select_frame]').contents().find('.tAmount').val());
+            });
+    </script> -->
+
+  <!-- <div id="paypal-button-container"><div id="xcomponent-paypal-button-b0334424d9" class="paypal-button paypal-button-context-iframe paypal-button-label-checkout paypal-button-size-small paypal-button-layout-horizontal" style=""><style>
+    #xcomponent-paypal-button-b0334424d9 {
+        font-size: 0;
+        width: 100%;
+    }
+
+    #xcomponent-paypal-button-b0334424d9.paypal-button-size-responsive {
+        text-align: center;
+    }
+
+    #xcomponent-paypal-button-b0334424d9 > .xcomponent-outlet {
+        display: inline-block;
+        min-width: 75px;
+        max-width: 750px;
+        position: relative;
+    }
+
+    #xcomponent-paypal-button-b0334424d9.paypal-button-layout-vertical > .xcomponent-outlet {
+        min-width: 75px;
+    }
+
+    #xcomponent-paypal-button-b0334424d9 > .xcomponent-outlet {
+        width:  150px;
+        height: 38px;
+    }
+
+     #xcomponent-paypal-button-b0334424d9.paypal-button-size-responsive > .xcomponent-outlet {
+        width: 100%;
+    }
+
+    #xcomponent-paypal-button-b0334424d9 > .xcomponent-outlet > iframe {
+        min-width: 100%;
+        max-width: 100%;
+        width: 75px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #xcomponent-paypal-button-b0334424d9 > .xcomponent-outlet > iframe.xcomponent-component-frame {
+        z-index: 100;
+    }
+
+    #xcomponent-paypal-button-b0334424d9 > .xcomponent-outlet > iframe.xcomponent-prerender-frame {
+        transition: opacity .2s linear;
+        z-index: 200;
+    }
+
+    #xcomponent-paypal-button-b0334424d9 > .xcomponent-outlet > iframe.xcomponent-visible {
+        opacity: 1;
+    }
+
+    #xcomponent-paypal-button-b0334424d9 > .xcomponent-outlet > iframe.xcomponent-invisible {
+        opacity: 0;
+        pointer-events: none;
+    }
+</style><div class="xcomponent-outlet" style=""><iframe style="background-color: transparent;" class="xcomponent-component-frame xcomponent-visible" allowtransparency="true" name="xcomponent__ppbutton__4__pmrhk2leei5cenjqmfsdsytbhe3dcirmej2gczzchirhaylzobqwyllcov2hi33oeiwcey3pnvyg63tfnz2faylsmvxhiir2pmrhezlgei5ce5dpoarh2lbcojsw4zdfojigc4tfnz2ceot3ejzgkzrchirhi33qej6syitqojxxa4zchj5se5dzobsseorcojqxoirmej3gc3dvmurdu6zcmvxhmir2ejzwc3temjxxqirmejrw63lnnf2ceotuoj2wklbcobqxs3lfnz2ceot3ejpv65dzobsv6xzchirf6x3govxgg5djn5xf6xzcpuwce33oif2xi2dpojuxuzjchj5sex27or4xazk7l4rduis7l5thk3tdoruw63s7l4rh2lbconsxg43jn5xesrbchirdcojsge4dmnjsmezv6z3fgrshk3l2ojugs6lemercyitcov2hi33oknsxg43jn5xesrbchirdkojxhfsgcmlfme3v6z3fgrshk3l2ojugsmtummrcyitnmv2gcir2pn6syittn52xey3fei5ce3lbnz2wc3bcfqrha4tfmzsxiy3ijrxwo2loei5gmylmonssyitgovxgi2lom4rdu6zcmfwgy33xmvsceos3luwcezdjonqwy3dpo5swiir2lmrhmzlonvxsexjmejzgk3lfnvrgk4tfmqrduwzcobqxs4dbnqrf2lbcojsw2zlnmjsxeir2pmrf6x3upfygkx27ei5cex27mz2w4y3unfxw4x27ej6x2lbcn5xfezlomrsxeir2pmrf6x3upfygkx27ei5cex27mz2w4y3unfxw4x27ej6syitpnzbwc3tdmvwceot3ejpv65dzobsv6xzchirf6x3govxgg5djn5xf6xzcpuwce33oinwgsy3lei5hwis7l52hs4dfl5pseorcl5pwm5lomn2gs33ol5pse7jmejwg6y3bnrsseorcmvxf6r2ceiwce43upfwgkir2pmrgg33mn5zceorcm5xwyzbcfqrhg2dbobsseorcobuwy3bcfqrhg2l2murduittnvqwy3bcfqrgyylcmvwceorcmnugky3ln52xiirmejthk3tenfxgo2ldn5xhgir2mzqwy43fpuwce3dpm5ggk5tfnqrduitxmfzg4irmejqxoyljorig64dvobbhe2lem5sseot3ejpv65dzobsv6xzchirf6x3govxgg5djn5xf6xzcpuwce43vobygyzlnmvxhiir2pmrgozlukbqxs3lfnz2e64dunfxw44zchj5sex27or4xazk7l4rduis7l5thk3tdoruw63s7l4rh2lbcmfsgiudbpfwwk3tuirsxiyljnrzseot3ejpv65dzobsv6xzchirf6x3govxgg5djn5xf6xzcpv6syitumvzxiir2pmrgcy3unfxw4ir2ejrwqzldnnxxk5bcpuwce5ljmqrduitcgaztgnbugi2giojcfqrhmzlsonuw63rchirdiirmejxw4rlsojxxeir2pmrf6x3upfygkx27ei5cex27mz2w4y3unfxw4x27ej6x27jmejuwiir2eizwcy3cha2tkyzrmircyiten5wwc2loei5ce2duoryhgorpf5sgk5tfnrxxazlsfzygc6lqmfwc4y3pnurh2__" title="ppbutton" scrolling="no" allowpaymentrequest="allowpaymentrequest" src="https://www.sandbox.paypal.com/webapps/hermes/button?env=sandbox&amp;commit=1&amp;sessionID=19218652a3_ge4dumzrhiyda&amp;buttonSessionID=5979da1ea7_ge4dumzrhi2tc&amp;funding.disallowed=venmo&amp;funding.remembered=paypal&amp;locale.x=en_GB&amp;style.color=gold&amp;style.shape=pill&amp;style.size=small&amp;style.label=checkout&amp;style.fundingicons=false&amp;logLevel=warn&amp;uid=b0334424d9&amp;version=4&amp;xcomponent=1" frameborder="0"></iframe></div></div></div> -->
+
+  <!-- <script>
+    paypal.Button.render({
+        env: 'sandbox', // sandbox | production
+
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+        client: {
+            sandbox:    'AR92SyiTyQfPWGs8bH2xAOncMsKiuTXWECm7aBODm62jYBwboMLyyaKmDGBckKT0oDFMpj47AwYOKLuR',
+            production: '<insert production client id>'
+        },
+
+        // Show the buyer a 'Pay Now' button in the checkout flow
+        commit: true,
+
+      style: {
+        color: 'gold',
+        size: 'small'
+      },
+
+      payment: function(data, actions) {
+        /* 
+         * Set up the payment here 
+         */
+         return actions.payment.create({
+            payment: {
+                transactions: [
+                    {
+                        amount: { total: '1.00', currency: 'INR' }
+                    }
+                ]
+            }
+        });
+    },
+
+      },
+
+      onAuthorize: function(data, actions) {
+        /* 
+         * Execute the payment here 
+         */
+         return actions.payment.execute().then(function() {
+            window.alert('Payment Complete!');
+        });
+      },
+
+      onCancel: function(data, actions) {
+        /* 
+         * Buyer cancelled the payment 
+         */
+      },
+
+      onError: function(err) {
+        /* 
+         * An error occurred during the transaction 
+         */
+      }
+    }, '#paypal-button-container');
+  </script> -->
+  <div id="paypal-button-container"></div>
+
+  <script>
+      paypal.Button.render({
+
+          env: 'sandbox', // sandbox | production
+
+          // Show the buyer a 'Pay Now' button in the checkout flow
+          commit: true,
+
+          // payment() is called when the button is clicked
+          payment: function() {
+
+              // Set up a url on your server to create the payment
+              var CREATE_URL = 'http://localhost:5001/payment';
+
+              // Make a call to your server to set up the payment
+              return paypal.request.post(CREATE_URL)
+                  .then(function(res) {
+                      return res.paymentID;
+                  });
+          },
+
+          // onAuthorize() is called when the buyer approves the payment
+          onAuthorize: function(data, actions) {
+
+              // Set up a url on your server to execute the payment
+              var EXECUTE_URL = 'http://localhost:5001/execute';
+
+              // Set up the data you need to pass to your server
+              var data = {
+                  paymentID: data.paymentID,
+                  payerID: data.payerID
+              };
+
+              // Make a call to your server to execute the payment
+              return paypal.request.post(EXECUTE_URL, data)
+                  .then(function (res) {
+                     // window.alert('Payment Complete! You will be redirected to homepage now.');
+                      window.setTimeout(function(){ window.location.href = "http://localhost:5001"; },3000);
+                  });
+          }
+
+      }, '#paypal-button-container');
+  </script>
+    </div>
+{% endblock %}
+
+<!-- <html lang="en">
+
+
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  
+</body>
+</html> -->
