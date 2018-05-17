@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<title>UI - Ayushman Bhava</title>
+<!--
+Snapshot Template
+http://www.templatemo.com/tm-493-snapshot
+
+Zoom Slider
+https://vegas.jaysalvat.com/
+
+Caption Hover Effects
+http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
+-->
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../static/css/animate.min.css">
+	<link rel="stylesheet" href="../static/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="../static/css/component.css">
+	
+    <link rel="stylesheet" href="../static/css/owl.theme.css">
+	<link rel="stylesheet" href="../static/css/owl.carousel.css">
+	<link rel="stylesheet" href="../static/css/vegas.min.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+  <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<!-- Google web font  -->
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300' rel='stylesheet' type='text/css'>
+	<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+</head>
+<body id="top" data-spy="scroll" data-offset="50" data-target=".navbar-collapse">
+
+
+<!-- Preloader section -->
+
+<div class="preloader">
+     <div class="sk-spinner sk-spinner-pulse"></div>
+</div>
+
+
+<!-- Navigation section  -->
+
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon icon-bar"></span>
+          <span class="icon icon-bar"></span>
+          <span class="icon icon-bar"></span>
+        </button>
+        <a href="#top" class="navbar-brand smoothScroll">Ayushman Bhava</a>
+      </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#top" class="smoothScroll"><span>Home</span></a></li>
+            <li><a href="#about" class="smoothScroll"><span>About</span></a></li>
+            <!-- <li><a href="#gallery" class="smoothScroll"><span>Gallery</span></a></li> -->
+            <!-- <li><a href="#contact" class="smoothScroll"><span>Contact</span></a></li> -->
+          </ul>
+       </div>
+
+    </div>
+  </div>
+
+
+<!-- Home section -->
+
+<section id="home">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+        <h1 class="wow fadeInUp" data-wow-delay="0.2s">Ayushman Bhava</h1>
+        <p class="wow fadeInUp" data-wow-delay="0.5s">This is an autonomous machine which will help you connect to a Doctor in an emergency or dispense normal medicines to you. :)</p>
+        <a href="/purchase" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="0.9s">Purchase</a>
+        <a id="sos-btn" href="/sos" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="0.9s">SOS Alert</a>
+        <iframe class="sos" src="http://appr.tc/r/99991" id="sos1" frameborder="10" height="550" width="1000" ></iframe>
+
+      <!--   <input type="submit" value="SOS Alert" name="SOS"/> <br> <br> <br>
+        <input type="submit" value="Purchase" name="Purchase" /> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+        $(document).ready(function(){
+            $("#sos-btn").click(function(){
+                //$("#sos1").show()
+                //$("#sos1").attr('src', 'http://appr.tc/r/99991')
+                $("#confirm-join-button").click()
+            });
+        });
+</script>
+         
+<!-- About section -->
+
+<!-- Footer section -->
+
+<footer>
+	<div class="container">
+    
+		<div class="row">
+
+			<div class="col-md-12 col-sm-12">
+            
+<!--                 <ul class="social-icon"> 
+                    <li><a href="#" class="fa fa-facebook wow fadeInUp" data-wow-delay="0.2s"></a></li>
+                    <li><a href="#" class="fa fa-twitter wow fadeInUp" data-wow-delay="0.4s"></a></li>
+                    <li><a href="#" class="fa fa-linkedin wow fadeInUp" data-wow-delay="0.6s"></a></li>
+                    <li><a href="#" class="fa fa-instagram wow fadeInUp" data-wow-delay="0.8s"></a></li>
+                    <li><a href="#" class="fa fa-google-plus wow fadeInUp" data-wow-delay="1.0s"></a></li>
+                </ul> -->
+
+				<p class="wow fadeInUp"  data-wow-delay="1s" >Copyright &copy; 2018 Shreyas Bapat | 
+                Design: <a href="https://plus.google.com/+templatemo" title="free css templates" target="_blank">Templatemo</a></p>
+                
+			</div>
+			
+		</div>
+        
+	</div>
+</footer>
+
+<!-- Back top -->
+<a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
+
+<!-- Javascript  -->
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/vegas.min.js"></script>
+<script src="../static/js/modernizr.custom.js"></script>
+<script src="../static/js/toucheffects.js"></script>
+<script src="../static/js/owl.carousel.min.js"></script>
+<script src="../static/js/smoothscroll.js"></script>
+<script src="../static/js/wow.min.js"></script>
+<script src="../static/js/custom.js"></script>
+<script type="text/javascript" src="../static/js/materialize.min.js"></script>
+</body>
+</html>

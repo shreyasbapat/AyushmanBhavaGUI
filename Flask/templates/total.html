@@ -29,6 +29,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 	<link rel="stylesheet" href="../static/css/vegas.min.css">
 	<link rel="stylesheet" href="../static/css/style.css">
   <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 	<!-- Google web font  -->
@@ -83,9 +84,11 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
         <p class="wow fadeInUp" data-wow-delay="0.9s">This is an autonomous machine which will help you connect to a Doctor in an emergency or dispense normal medicines to you. :)</p><br><br>
         <p class="wow fadeInUp" data-wow-delay="0.9s">Grand Total : {{ variable }}</p>
 
-
-        <a href="http://localhost:5001/purchase" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Purchase</a>
-      <!--   <input type="submit" value="SOS Alert" name="SOS"/> <br> <br> <br>
+        
+        <a id="purchased" href="http://localhost:5001/payy" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Purchase directly</a>
+        <!-- <a id="purchase" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Purchase</a> -->
+        <iframe id="purchase-frame" frameborder="20" height="250" width="800" hidden></iframe>
+        <!--   <input type="submit" value="SOS Alert" name="SOS"/> <br> <br> <br>
         <input type="submit" value="Purchase" name="Purchase" /> -->
       </div>
 
@@ -93,7 +96,14 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
   </div>
 </section>
 
-
+<script>
+  $(document).ready(function(){
+    $("#purchase").click(function(){
+      $("#purchase-frame").show()      
+      $("#purchase-frame").attr('src', 'http://localhost:5001/payy')
+    });
+  });
+</script>
          
 <!-- About section -->
 
