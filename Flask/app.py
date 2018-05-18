@@ -1,13 +1,13 @@
-from flask import Flask, request, url_for, render_template, jsonify
-from flask_restful import Resource, Api
+from flask import Flask, url_for, render_template, jsonify
 import requests
-import json
 import os
-import subprocess
 from openpyxl import load_workbook
 import paypalrestsdk
-import logging
 from time import sleep
+# from flask_restful import Resource
+# import json
+# import subprocess
+# import logging
 
 def work_load():
 	wb1 = load_workbook('sheet.xlsx')
@@ -53,7 +53,7 @@ os.environ['http_proxy'] = "http://10.8.0.1:8080"
 os.environ['https_proxy'] = "https://10.8.0.1:8080"
 
 app = Flask(__name__)
-api = Api(app)
+# api = Api(app)
 
 @app.errorhandler(404)
 def page_not_found(e):
