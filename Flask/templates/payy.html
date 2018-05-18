@@ -28,7 +28,9 @@
 <script>
   paypal.Button.render({
 
+      BASE_URL = "http://127.0.0.1:5001",
       env: 'sandbox', // sandbox | production
+
       style: {
         label: 'pay',
         fundingicons: true, // optional
@@ -44,7 +46,7 @@
       payment: function() {
 
           // Set up a url on your server to create the payment
-          var CREATE_URL = 'http://localhost:5001/payment';
+          var CREATE_URL = BASE_URL+'/payment';
 
           // Make a call to your server to set up the payment
           return paypal.request.post(CREATE_URL)
@@ -57,7 +59,7 @@
       onAuthorize: function(data, actions) {
 
           // Set up a url on your server to execute the payment
-          var EXECUTE_URL = 'http://localhost:5001/execute';
+          var EXECUTE_URL = BASE_URL+'/execute';
 
           // Set up the data you need to pass to your server
           var data = {
@@ -68,8 +70,8 @@
           // Make a call to your server to execute the payment
           return paypal.request.post(EXECUTE_URL, data)
               .then(function (res) {
-                 // window.alert('Payment Complete! You will be redirected to homepage now.');
-                  window.setTimeout(function(){ window.location.href = "http://localhost:5001/afterpay"; },3000);
+                  window.alert('Payment Complete! You will be redirected to homepage now.');
+                  window.setTimeout(function(){ window.location.href = "{{url_for('dispense')}}"; },3000);
               });
       }
 
@@ -77,6 +79,6 @@
 </script>
 
 <br>
-<a href="http://localhost:5001" style="font-size:28px; font-weight:bold; color:red">Cancel Payment</a><br>
-<a href="http://localhost:5001/dis" style="font-size:25px; font-weight:bold;  color:orange">Cancel Payment and do New Purchase</a>
+<a href="{{url_for('home')}}" style="font-size:28px; font-weight:bold; color:red">Cancel Payment</a><br>
+<a href="{{url_for('discard')}}" style="font-size:25px; font-weight:bold;  color:orange">Cancel Payment and do New Purchase</a>
 </div>

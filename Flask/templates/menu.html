@@ -37,7 +37,6 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 </head>
 <body id="top" data-spy="scroll" data-offset="50" data-target=".navbar-collapse">
 
-
 <!-- Preloader section -->
 
 <div class="preloader">
@@ -60,8 +59,8 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
       </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="http://localhost:5001/" class="smoothScroll"><span>Home</span></a></li>
-            <li><a href="http://localhost:5001/" class="smoothScroll"><span>Main Menu</span></a></li>
+            <li><a href="{{url_for('home')}}" class="smoothScroll"><span>Home</span></a></li>
+            <li><a href="{{url_for('home')}}" class="smoothScroll"><span>Main Menu</span></a></li>
             <!-- <li><a href="#gallery" class="smoothScroll"><span>Gallery</span></a></li> -->
             <!-- <li><a href="#contact" class="smoothScroll"><span>Contact</span></a></li> -->
           </ul>
@@ -112,9 +111,9 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
         <a onclick="med('10')" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Pads</a>
         <span id="medd10" class="smoothScroll btn btn-info btn-lg wow fadeInUp">0</span><br><br>
 
-        <a href="http://localhost:5001/dis" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Reset Current Order</a>
-        <a href="http://localhost:5001/nxt" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Continue</a>
-        <a href="http://localhost:5001/afterpay" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Dispense</a>
+        <a href="{{url_for('discard')}}" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Reset Current Order</a>
+        <a href="{{url_for('grandt')}}" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Continue</a>
+        <a href="{{url_for('dispense')}}" class="smoothScroll btn btn-warning btn-lg wow fadeInUp" data-wow-delay="1.2s">Dispense</a>
         <!--   <input type="submit" value="SOS Alert" name="SOS"/> <br> <br> <br>
           <input type="submit" value="Purchase" name="Purchase" /> -->
         </div>
@@ -125,15 +124,16 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 <script>
   function med(num){
                  $.ajax({
-                  url: "http://localhost:5001/med/"+num,
+                  url: "{{url_for('med',id=num)}}"+num,
                   type: "get",
                   //data: {jsdata: text},
                   success: function(response) {
-                      console.log("med"+num+" added!")
-                      $("#medd"+num).html(response);
+                    console.log("{{url_for('med',id=num)}}"+num)                    
+                    console.log("med"+num+" added!")
+                    $("#medd"+num).html(response);
                   },
                   error: function(xhr) {
-                      //Do Something to handle error
+                    //Do Something to handle error
                   }
       
   });

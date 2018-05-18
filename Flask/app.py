@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, jsonify
+from flask import Flask, request, url_for, render_template, jsonify
 import requests
 import os
 from openpyxl import load_workbook
@@ -34,7 +34,7 @@ i = ws['B9']
 j = ws['B10']
 
 items = [a,b,c,d,e,f,g,h,i,j]
-
+gpiopin = [6,5,13]
 def restart_trans():
 	for i in range (1,11):
 		ws.cell(row=i, column=2).value=0
@@ -62,6 +62,11 @@ def page_not_found(e):
 @app.errorhandler(500)
 def pag_not_found(e):
     return render_template('500.html'), 500
+
+@app.route('/home')
+def home():
+	restart_trans()
+	return render_template('index.html')
 
 @app.route('/')
 def hello():
@@ -169,12 +174,16 @@ def run_m10():
 
 @app.route('/afterpay')
 def dispense():
-	gate = False
-	for i in range (1,11):
-		for  j in range (1,ws.cell(row=i, column=2).value + 1):
-			run_motor(Motor=i)
-			sleep(6)
-	return render_template('thanks.html')
+    gate = False
+    for i in gpiopin:
+	    num=int(ws.cell(row=i, column=2).value or 0)
+	    print ("GPIO Pin : "+str(i)+" <--> No. of items : "+str(num))
+		#print(type(num))
+	    for  j in range (0,num):
+	    	run_motor(Motor=i)
+	    	sleep(3)
+    return render_template('thanks.html')
+
 
 
 @app.route('/test')
@@ -247,10 +256,6 @@ def execute():
 
     return jsonify({'success' : success})
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
-
 
 if __name__ == '__main__':
-    app.run(port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
