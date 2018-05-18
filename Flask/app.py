@@ -22,7 +22,7 @@ def run_motor(Motor):
 
 ws, wb1 = work_load()
 
-a = ws['B1']   
+a = ws['B1']
 b = ws['B2']
 c = ws['B3']
 d = ws['B4']
@@ -174,7 +174,7 @@ def dispense():
 		for  j in range (1,ws.cell(row=i, column=2).value + 1):
 			run_motor(Motor=i)
 			sleep(6)
-	return render_template('index.html')
+	return render_template('thanks.html')
 
 
 @app.route('/test')
