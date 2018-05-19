@@ -14,18 +14,36 @@ def setup(Motor=1):
  
 def run(Motor=1):
 	# Going forwards
-	GPIO.output(Motor,GPIO.HIGH)
+	GPIO.output(Motor,GPIO.LOW)
 	# GPIO.output(Motor1B,GPIO.LOW)
 	# GPIO.output(Motor1E,GPIO.HIGH)
  
-	sleep(5)
+	sleep(2)
 	# Stop
-	GPIO.output(Motor,GPIO.LOW)
+	GPIO.output(Motor,GPIO.HIGH)
 
 def destroy():	
 	GPIO.cleanup()
 
-# if __name__ == '__main__':     # Program start from here
-# 	setup()
-# 	run()
-# 	destroy()
+gpiopin =[5,6,13,19,26,7,12,16,20,21]
+#if __name__ == '__main__':
+#	for i in gpiopin:
+#		print (i)
+#		setup(Motor=i)
+#		run(Motor=i)
+#		sleep(2)
+#	destroy()
+
+#if __name__ == '__main__':
+#	i=100000000
+#	while(i>0):
+#		i=i-1
+#		GPIO.setmode(GPIO.BCM)				# GPIO Numbering
+#		GPIO.setup(5,GPIO.OUT)
+#		GPIO.output(5,GPIO.HIGH)
+#	destroy()
+
+if __name__ == '__main__':			# GPIO Numbering
+	setup(Motor=5)
+	run(Motor=5)
+	destroy()
