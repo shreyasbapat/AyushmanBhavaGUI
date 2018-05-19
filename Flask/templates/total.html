@@ -80,15 +80,21 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
     <div class="row">
 
       <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
+        <a id="purchasedd" href="{{url_for('purchase')}}" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Go to previous page</a>
         <h1 class="wow fadeInUp" data-wow-delay="0.6s">Ayushman Bhava</h1>
         <p class="wow fadeInUp" data-wow-delay="0.9s">This is an autonomous machine which will help you connect to a Doctor in an emergency or dispense normal medicines to you. :)</p><br><br>
         <p class="wow fadeInUp" data-wow-delay="0.9s">Grand Total : {{ variable }}</p>
 
         
-        <a id="purchased" href="{{url_for('payy')}}"" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Purchase directly</a>
-        <br>
-        <a href="{{url_for('home')}}" style="font-size:28px; font-weight:bold; color:red">Cancel Payment</a><br>
-        <a href="{{url_for('discard')}}" style="font-size:25px; font-weight:bold;  color:orange">Cancel Payment and do New Purchase</a>
+        <a id="purchased" href="{{url_for('payy')}}" style="font-size:32px" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1s">Proceed to Payment</a>
+        <br><br><br>
+        <button>
+          <a href="{{url_for('home')}}" style="font-size:32px; font-weight:bold; color:red">Cancel Payment</a><br>
+        </button>
+        <br><br>
+        <button>
+          <a href="{{url_for('discard')}}" style="font-size:38px; font-weight:bold;  color:orange">Cancel Payment and do New Purchase</a>
+        </button>
         <!-- <a id="purchase" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s">Purchase</a> -->
         <iframe id="purchase-frame" frameborder="20" height="250" width="800" hidden></iframe>
         <!--   <input type="submit" value="SOS Alert" name="SOS"/> <br> <br> <br>

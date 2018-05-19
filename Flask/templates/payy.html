@@ -26,9 +26,9 @@
 <div id="paypal-button-container"></div>
 
 <script>
+  BASE_URL = "http://127.0.0.1:5001",
   paypal.Button.render({
 
-      BASE_URL = "http://127.0.0.1:5001",
       env: 'sandbox', // sandbox | production
 
       style: {
@@ -70,7 +70,8 @@
           // Make a call to your server to execute the payment
           return paypal.request.post(EXECUTE_URL, data)
               .then(function (res) {
-                  window.alert('Payment Complete! You will be redirected to homepage now.');
+                  console.log('Payment Complete!')
+                  //window.alert('Payment Complete! You will be redirected to homepage now.');
                   window.setTimeout(function(){ window.location.href = "{{url_for('dispense')}}"; },3000);
               });
       }
@@ -79,6 +80,10 @@
 </script>
 
 <br>
-<a href="{{url_for('home')}}" style="font-size:28px; font-weight:bold; color:red">Cancel Payment</a><br>
-<a href="{{url_for('discard')}}" style="font-size:25px; font-weight:bold;  color:orange">Cancel Payment and do New Purchase</a>
+<button>
+    <a href="{{url_for('home')}}" style="font-size:25px; font-weight:bold; color:red">Cancel Payment</a><br>
+</button>
+<button>
+    <a href="{{url_for('discard')}}" style="font-size:28px; font-weight:bold;  color:orange">Cancel Payment and do New Purchase</a>
+</button>
 </div>

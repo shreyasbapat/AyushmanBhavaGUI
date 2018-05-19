@@ -34,7 +34,6 @@ i = ws['B9']
 j = ws['B10']
 
 items = [a,b,c,d,e,f,g,h,i,j]
-gpiopin = [6,5,13]
 def restart_trans():
 	for i in range (1,11):
 		ws.cell(row=i, column=2).value=0
@@ -90,11 +89,17 @@ def discard():
 def grandt():	
 	return render_template('total.html', variable=str(compute_sum()))
 
-@app.route('/med/<id>')
-def med(id):
+@app.route('/addmed/<id>')
+def addmed(id):
 	id=int(id)
 	ws.cell(row=id, column=2).value = ws.cell(row=id, column=2).value + 1
 	wb1.save('sheet.xlsx')
+	# print (ws.cell(row=id, column=2).value)
+	return str(ws.cell(row=id, column=2).value)
+
+@app.route('/getmed/<id>')
+def getmed(id):
+	id=int(id)
 	# print (ws.cell(row=id, column=2).value)
 	return str(ws.cell(row=id, column=2).value)
 
@@ -172,25 +177,25 @@ def run_m10():
    motor1.run(Motor=10)
    return render_template('index.html')
 
+
+gpiopin = {
+     1:13,
+     2:6,
+     3:5
+}
+
 @app.route('/afterpay')
 def dispense():
     gate = False
-    for i in gpiopin:
+    for i,v in gpiopin.items():
 	    num=int(ws.cell(row=i, column=2).value or 0)
-	    print ("GPIO Pin : "+str(i)+" <--> No. of items : "+str(num))
+	    print (str(i)+" -> GPIO Pin : "+str(v)+" <--> No. of items : "+str(num))
 		#print(type(num))
 	    for  j in range (0,num):
-	    	run_motor(Motor=i)
+	    	run_motor(Motor=v)
 	    	sleep(3)
     return render_template('thanks.html')
 
-
-
-@app.route('/test')
-def test():
-	ws.cell(row=6, column=2).value=5
-	wb1.save('sheet.xlsx')
-	return
 
 @app.route('/about')
 def about():
@@ -224,8 +229,8 @@ def payment():
     "payer": {
         "payment_method": "paypal"},
     "redirect_urls": {
-        "return_url": "http://localhost:5001",
-        "cancel_url": "http://localhost:3000"},
+        "return_url": "http://127.0.0.1:5001",
+        "cancel_url": "http://127.0.0.1:3000"},
     "transactions": [{
         "item_list": {
             "items": [{
@@ -253,6 +258,8 @@ def execute():
     if payment.execute({'payer_id':request.form['payerID']}):
         print ('Execute Success')
         success = True
+    else:
+        print(execute.error)
 
     return jsonify({'success' : success})
 
